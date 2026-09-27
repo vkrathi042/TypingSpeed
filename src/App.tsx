@@ -485,28 +485,6 @@ export default function App() {
   return (
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
       
-      {/* Top Notification & Exam Banner (Govt Exam Mode) */}
-      <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 text-white text-xs sm:text-sm font-medium py-1.5 px-4 shadow-sm select-none">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 truncate">
-            <span className="bg-white/20 uppercase text-[10px] tracking-wider font-bold px-1.5 py-0.5 rounded shrink-0">
-              Govt Exam Mode
-            </span>
-            <span className="truncate">
-              SSC CGL Tier-II (27 WPM / 2000 KDPH), CHSL (35 WPM Eng / 30 WPM Hindi), CPCT MP, Allahabad High Court Pattern Ready!
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 text-xs shrink-0">
-            <span className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
-              Unicode (Mangal Font) Supported
-            </span>
-            <span className="text-white/60">|</span>
-            <span className="text-amber-100 font-semibold">100% Client-Side & Free</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -521,9 +499,6 @@ export default function App() {
                 <h1 className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-blue-700 to-indigo-600 dark:from-blue-400 dark:to-indigo-300 bg-clip-text text-transparent">
                   TypeSpeed Practice
                 </h1>
-                <span className="hidden sm:inline-block text-[11px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-300/40">
-                  Sarkari Exam Edition
-                </span>
               </div>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5">
                 Online Speed Test & Accuracy Evaluator
@@ -665,7 +640,7 @@ export default function App() {
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 flex items-center justify-between">
                 <span>📚 TEXT DIFFICULTY</span>
                 <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase">
-                  {difficulty} (Exam Mix)
+                  {difficulty} (Mix)
                 </span>
               </label>
               <div className="grid grid-cols-3 gap-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-medium">
@@ -697,7 +672,7 @@ export default function App() {
               <button
                 onClick={() => setIsCustomOpen(true)}
                 className="p-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
-                title="Paste Your Own Passage / Exam PDF Text"
+                title="Paste Your Own Passage"
               >
                 <Plus className="w-4 h-4" />
               </button>
@@ -765,7 +740,7 @@ export default function App() {
             <div className="flex items-center justify-between text-xs font-bold text-slate-400">
               <span>⌨️ CPM / KDPH</span>
               <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold px-1.5 rounded">
-                Govt
+                Live
               </span>
             </div>
             <div className="mt-2 flex items-baseline gap-1.5">
@@ -859,10 +834,10 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             <div className="flex items-center gap-2">
               <span className="bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-semibold px-2.5 py-1 rounded-lg">
-                {customPassageTag || `Govt Exam Passage #${currentPassage.id}`}
+                {customPassageTag || `Passage #${currentPassage.id}`}
               </span>
               <span className="hidden sm:inline-block text-slate-400">
-                • {currentPassage.category || 'General Administration'}
+                • {currentPassage.category || 'Practice Section'}
               </span>
             </div>
 
@@ -905,7 +880,7 @@ export default function App() {
           <div
             ref={textDisplayRef}
             onClick={() => inputRef.current?.focus()}
-            className={`relative max-h-56 sm:max-h-64 overflow-y-auto pr-2 select-none border border-slate-100 dark:border-slate-800/60 rounded-2xl p-4 sm:p-6 bg-slate-50/60 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 cursor-text transition-all ${
+            className={`relative max-h-56 sm:max-h-64 overflow-y-auto whitespace-pre-wrap break-words pr-2 select-none border border-slate-100 dark:border-slate-800/60 rounded-2xl p-4 sm:p-6 bg-slate-50/60 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 cursor-text transition-all ${
               language === 'hi' ? 'font-hindi' : 'font-mono'
             } ${currentFontClass}`}
           >
@@ -923,7 +898,7 @@ export default function App() {
 
               return (
                 <span key={index} id={`char-${index}`} className={charClass}>
-                  {char === ' ' ? '\u00A0' : char}
+                  {char}
                 </span>
               );
             })}
@@ -999,7 +974,7 @@ export default function App() {
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                  SSC CGL & CHSL (DEST)
+                  Speed Standard 1 (CHSL Pattern)
                 </h3>
                 <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded">
                   15 Mins
@@ -1013,7 +988,7 @@ export default function App() {
               onClick={() => applyPreset(EXAM_PRESETS[0])}
               className="w-full text-center text-xs font-semibold py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-950/60 dark:hover:text-blue-300 transition-colors cursor-pointer"
             >
-              Load SSC CHSL Pattern
+              Load Standard 35 WPM
             </button>
           </div>
 
@@ -1023,7 +998,7 @@ export default function App() {
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
-                  MP CPCT (Hindi + English)
+                  Speed Standard 2 (CPCT Pattern)
                 </h3>
                 <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded">
                   15 Mins
@@ -1037,7 +1012,7 @@ export default function App() {
               onClick={() => applyPreset(EXAM_PRESETS[1])}
               className="w-full text-center text-xs font-semibold py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-950/60 dark:hover:text-emerald-300 transition-colors cursor-pointer"
             >
-              Load CPCT Hindi Pattern
+              Load Standard 20 WPM Hindi
             </button>
           </div>
 
@@ -1047,21 +1022,21 @@ export default function App() {
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-orange-600"></span>
-                  High Court & Stenographer
+                  Speed Standard 3 (High Court Pattern)
                 </h3>
                 <span className="text-[11px] font-semibold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950 px-2 py-0.5 rounded">
                   10 Mins
                 </span>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-3">
-                Allahabad & Patna High Court tests require <b>30-40 WPM</b> with high accuracy (over 95%). Mistakes are heavily penalized in court exams.
+                Courts and stenography tests typically require <b>30 to 40 WPM</b> with high precision (over 95% accuracy).
               </p>
             </div>
             <button
               onClick={() => applyPreset(EXAM_PRESETS[2])}
               className="w-full text-center text-xs font-semibold py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-950/60 dark:hover:text-orange-300 transition-colors cursor-pointer"
             >
-              Load High Court Pattern
+              Load Standard 40 WPM
             </button>
           </div>
 
@@ -1074,14 +1049,14 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <p className="font-semibold text-slate-700 dark:text-slate-300">
-              TypeSpeed Practice — sarkaritypingtest.com Inspired Exam Simulator
+              TypeSpeed Practice
             </p>
             <p className="text-slate-400 text-[11px] mt-0.5">
-              Designed for SSC, CPCT, Railway NTPC, Bank Clerk, and Judicial High Court Typing Exams.
+              Online typing speed and accuracy evaluator tool.
             </p>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>Strict Sarkari WPM Calculation</span>
+            <span>Standard WPM Calculation</span>
             <span>•</span>
             <span>Zero Server Footprint</span>
             <span>•</span>
@@ -1102,7 +1077,7 @@ export default function App() {
                     incorrectChars: 25,
                     timeElapsed: 60,
                     targetWpm: 35,
-                    examBenchmarkName: 'SSC CHSL (35 WPM)',
+                    examBenchmarkName: 'Typing Test (35 WPM)',
                     isPass: true,
                     dateStr: new Date().toLocaleDateString('en-US', {
                       year: 'numeric',
