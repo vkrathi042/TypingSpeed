@@ -1,0 +1,6 @@
+{
+  "name": "TypeSpeed Practice - Sarkari Exam Edition",
+  "description": "Online speed test and accuracy evaluator for SSC CGL, CHSL, MP CPCT, and High Court typing exams with English and Hindi Mangal font support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
